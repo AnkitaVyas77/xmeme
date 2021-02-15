@@ -1,0 +1,173 @@
+<!doctype HTML>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <title>Meme Blog</title>
+    <style>
+	.column {
+  	float: left;
+  	width: 33.33%;
+  	padding: 5px;
+	margin-top:5;
+	margin-right:5;
+	}
+
+
+	.row::after {
+  	content: "";
+  	clear: both;
+	width: 33.33%;
+  	padding: 5px;
+  	display: table;
+	margin-left:10;
+
+	}
+
+
+	</style>
+    
+
+
+
+  </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <body>
+
+    <nav
+ class="navbar navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand" href="{{ url_for('index')}}">Post</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('updatepos')}}">Update </a>
+            </li>
+            </ul>
+        </div>
+    </nav>
+    
+        <h1><center>Meme Blog</h1>
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+ 
+
+
+<br><br>
+<form name="addForm" id="addForm" action="https://localhost:8081/memes" method="POST" enctype="application/json">
+<label for="name">Name:  </label>
+<input type="text" id="name" name="name">
+
+<label for="caption">   Caption:   </label>
+<input type="text" id="caption" name="caption" >
+
+<label for="url">    Image URL:    </label>
+<input type="url" name="url" id="url" onChange={this.onURLChange}></input>
+
+<input type="Submit" value="submit"  class="btn btn-secondary">
+
+
+
+</form>
+
+
+<br></br>
+
+{% for post in posts %}
+<div class="column">
+
+<h1>
+{{post.id}}. {{ post.name }}  <input type = "button" id = "mybutton" class="btn btn-secondary" value = "Delete"  onclick="window.location.href='{{ url_for( 'deletepost', id=post.id ) }}';" />
+
+</h1>
+
+
+<h3>
+{{ post.caption }}</h3> <br>
+
+
+<div class="row">
+<img src="{{ post.url }}" width="350" height="245" >
+</div>
+</div>
+
+{% endfor %}
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
